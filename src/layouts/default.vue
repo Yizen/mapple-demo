@@ -1,67 +1,57 @@
 <template>
   <div>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <router-link
-            class="navbar-brand"
-            :to="{ name: 'home.index' }"
-          >
-            My App
-          </router-link>
-        </div>
+    <topnavbar></topnavbar>
+    <secondarynavbar></secondarynavbar>
 
-        <div class="collapse navbar-collapse" id="navbar">
-          <ul class="nav navbar-nav">
-            <router-link
-              :to="{ name: 'home.index' }"
-              active-class="active"
-              class="nav-item"
-              tag="li"
-            >
-              <a>
-                Home
-              </a>
-            </router-link>
-          </ul>
-          <ul class="nav navbar-nav">
-            <router-link
-              :to="{ name: 'account.index' }"
-              active-class="active"
-              class="nav-item"
-              tag="li"
-            >
-              <a>
-                Account
-              </a>
-            </router-link>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="page-header-content">
+        <div class="page-title">
+          <h4><router-link :to="{name: 'home.index'}"><i class="icon-arrow-left52 position-left"></i></router-link> <span class="text-semibold">{{pageTitle}}</span> - {{pageSubTitle}}</h4>
+
+          <ul class="breadcrumb position-right">
             <li>
-              <a href="#" @click.prevent="logout">
-                <i class="fa fa-sign-out"></i>
-              </a>
+              <router-link :to="{ name: 'home.index' }">Home</router-link>
             </li>
+            <li class="active">Projects List</li>
           </ul>
         </div>
-      </div>
-    </nav>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <!-- Content will be placed here -->
-          <slot></slot>
+        <div class="heading-elements">
+          <slot name="heading-elements"></slot>
         </div>
       </div>
     </div>
+    <!-- /page header -->
+    <!-- Page container -->
+    <div class="page-container">
 
+
+      <!-- Page content -->
+      <div class="page-content">
+        <slot name="sidebar"></slot>
+        <slot name="sidebar-secondary"></slot>
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+          <!-- Page content here -->
+          <slot name="content"></slot>
+
+        </div>
+        <!-- /main content -->
+
+      </div>
+      <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+
+
+    <!-- Footer -->
+    <div class="footer text-muted">
+      &copy; 2017. <a href="#"> Mapple</a> by <a href="#" target="_blank">Mapple inc.</a>
+    </div>
+    <!-- /footer -->
   </div>
 </template>
 
@@ -76,14 +66,27 @@
    * This way the app stays clean.
    */
 
-  import authService from '@/services/auth';
+  const affix = require('@/assets/js/affix.js');
 
   export default {
-    methods: {
-      logout() {
-        authService.logout();
+    props: {
+      pageTitle: {
+        type: String,
+        required: true,
+      },
+      pageSubTitle: {
+        type: String,
+        required: true,
       },
     },
+    mounted() {
+      this.$nextTick(() => {
+        affix.startAffix();
+      });
+    },
+    components: {
+      topnavbar: require('@/components/topnavbar.vue'),
+      secondarynavbar: require('@/components/secondarynavbar.vue'),
+    },
   };
-
 </script>

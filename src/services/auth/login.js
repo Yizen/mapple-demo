@@ -31,7 +31,13 @@ export default (user) => {
    */
   if (!user.email || !user.password) {
     failed();
-  } else {
+  } else if (user.email.toLowerCase() === 'cyrille.harfouche@gmail.com') {
     success('RandomGeneratedToken');
+  } else if (user.email.toLowerCase() === 'ogrenet@gmail.com') {
+    success('RandomGeneratedToken');
+  } else if (user.email.toLowerCase() === 'e.lepoder@thecodingmachine.com') {
+    success('RandomGeneratedToken');
+  } else {
+    failed();
   }
 };

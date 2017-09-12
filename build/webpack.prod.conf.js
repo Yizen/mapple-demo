@@ -8,6 +8,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var S3Plugin = require('webpack-s3-plugin')
+
 
 var env = config.build.env
 
@@ -90,7 +92,17 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    new S3Plugin({
+      s3Options: {
+        accessKeyId: 'AKIAI5VKFN3KW2GVCVKQ',
+        secretAccessKey: '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',
+        region: 'us-east-1'
+      },
+      s3UploadOptions: {
+        Bucket: 'mapple-poc'
+      },
+    })
   ]
 })
 

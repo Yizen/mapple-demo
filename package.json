@@ -1,7 +1,7 @@
 {
-  "name": "vue-2-boilerplate",
-  "version": "0.0.0",
-  "description": "A boilerplate for medium to large Vue 2 single page applications",
+  "name": "mapple-demo",
+  "version": "0.0.1",
+  "description": "The mapple demo",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
@@ -24,7 +24,7 @@
     "Page",
     "Application"
   ],
-  "author": "Peter van Meijgaard <petervanmeijgaard@hotmail.com>",
+  "author": "Olivier Grenet <ogrenet@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/petervmeijgaard/vue-2-boilerplate/issues"
@@ -32,11 +32,16 @@
   "homepage": "https://github.com/petervmeijgaard/vue-2-boilerplate#readme",
   "dependencies": {
     "axios": "^0.16.1",
-    "bootstrap": "^3.3.7",
+    "charlatan": "git+https://github.com/yizen/charlatan.git",
+    "element-ui": "^1.2.9",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
+    "moment": "^2.18.1",
+    "vivus": "^0.4.0",
     "vue": "^2.2.6",
-    "vue-i18n": "^6.1.1",
+    "vue-avatar": "^2.0.0",
+    "vue-i18n": "^6.0.0",
+    "vue-moment": "^2.0.2",
     "vue-router": "^2.5.1",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.1.2"
@@ -55,7 +60,7 @@
     "chalk": "^1.1.3",
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.0",
+    "css-loader": "^0.28.4",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.1.3",
     "eslint-friendly-formatter": "^2.0.7",
@@ -73,7 +78,7 @@
     "http-proxy-middleware": "^0.17.3",
     "json-loader": "^0.5.4",
     "less": "^2.7.2",
-    "less-loader": "^4.0.3",
+    "less-loader": "^4.0.4",
     "opn": "^4.0.2",
     "optimize-css-assets-webpack-plugin": "^1.3.1",
     "ora": "^1.2.0",
@@ -89,7 +94,8 @@
     "webpack-bundle-analyzer": "^2.4.0",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "webpack-s3-plugin": "^0.9.2"
   },
   "engines": {
     "node": ">= 4.0.0",

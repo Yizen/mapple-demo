@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+  <div class="page-container">
+    <div class="page-content">
+      <div class="content-wrapper">
         <!-- Content will be placed here -->
         <slot></slot>
       </div>

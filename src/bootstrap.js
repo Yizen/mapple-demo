@@ -127,6 +127,7 @@ export const i18n = new VueI18n({
   messages,
 });
 
+Vue.config.lang = 'en';
 
 /* ============
  * jQuery
@@ -148,10 +149,24 @@ window.$ = window.jQuery = jQuery;
  * Require bootstrap.
  *
  * http://getbootstrap.com/
- */
-require('bootstrap');
-require('bootstrap/less/bootstrap.less');
+ *
+ * Note : this is preinstalled in the less directory by the "Limitless" theme
 
+ require('bootstrap');
+ require('bootstrap/less/bootstrap.less');
+ */
+
+
+/* ============
+ * ElementUI
+ *
+ * http://element.eleme.io/#/en-US
+ */
+
+import Element from 'element-ui';
+import 'element-ui/lib/theme-default/index.css';
+
+Vue.use(Element);
 
 /* ============
  * Font Awesome
@@ -162,6 +177,40 @@ require('bootstrap/less/bootstrap.less');
  * http://http://fontawesome.io/
  */
 require('font-awesome/less/font-awesome.less');
+
+/*
+ * =======
+ * IcoMoon
+ * =======
+ *
+ * Basic icon font for UI Pictos
+ */
+
+require('./assets/less/_fonts/icomoon/styles.less');
+
+
+/*
+ * =======
+ * Vue-Moment
+ * =======
+ *
+ * Handy Moment.js filters for your Vue.js project.
+ */
+
+Vue.use(require('vue-moment'));
+
+/*
+ * ==================
+ * Layout specific JS
+ * ==================
+ *
+ */
+
+require('./assets/js/bootstrap.min');
+require('./assets/js/jasny_bootstrap.min');
+require('./assets/js/drilldown.js');
+require('./assets/js/jquery-inits.js');
+require('./assets/js/affix.js');
 
 
 /* ============
@@ -178,9 +227,15 @@ require('font-awesome/less/font-awesome.less');
  * It's that easy...
  *
  * http://stylus-lang.com/
+ *
  */
+
 require('./assets/stylus/app.styl');
 
+require('./assets/less/_main_starters/bootstrap.less'); // - Bootstrap core
+require('./assets/less/_main_starters/core.less'); // - Bootstrap core overrides
+require('./assets/less/_main_starters/components.less');// - all template components and plugins, except Bootstrap ones
+require('./assets/less/_main_starters/colors.less'); // - color system (optional)
 
 export default {
   router,
