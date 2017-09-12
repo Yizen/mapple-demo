@@ -95,8 +95,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     ]),
     new S3Plugin({
       s3Options: {
-        accessKeyId: 'AKIAI5VKFN3KW2GVCVKQ',
-        secretAccessKey: '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',
+        accessKeyId: 'AWS ACCESS KEY',
+        secretAccessKey: 'AWS SECRET KEY',
         region: 'us-east-1'
       },
       s3UploadOptions: {
